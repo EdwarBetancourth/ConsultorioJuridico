@@ -116,17 +116,68 @@
                                     <option value='2'>Asuntos sin representación judicial</option>
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <label for="nombre">Nombre consultante</label>
+                                <label for="nombre">Tema</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Subtema</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Actuaciones desarrolladas </label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Juzgado y/o Entidad ante la cual se tramita </label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Radicado Juzgado y/o Entidad</label>
                                 <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                                 <label for="codigocurso">Estado actuación</label>
                                 <select class="form-control" id="codigocurso" name="codigocurso">
-                                    <option value='1'>En tramite</option>
-                                    <option value='2'>Terminado </option>
+                                    <option value='1'>Satisfactoria</option>
+                                    <option value='2'>No satisfactoria</option>
+                                    <option value='3'>Desinterés del Usuario</option>                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigocurso">Instancias Judiciales </label>
+                                <select class="form-control" id="codigocurso" name="codigocurso">
+                                    <option value='1'>Satisfactoria</option>
+                                    <option value='2'>No satisfactoria</option>
+                                    <option value='3'>Desinterés del Usuario</option>  
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigocurso">Instancias Administrativas </label>
+                                <select class="form-control" id="codigocurso" name="codigocurso">
+                                    <option value='1'>Satisfactoria</option>
+                                    <option value='2'>No satisfactoria</option>
+                                    <option value='3'>Desinterés del Usuario</option>  
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigocurso">Forma alterna</label>
+                                <select class="form-control" id="codigocurso" name="codigocurso">
+                                    <option value='1'>Información</option>
+                                    <option value='2'>No satisfactoria</option>
+                                    <option value='3'>Desinterés del Usuario</option>  
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigocurso">Forma alterna</label>
+                                <select class="form-control" id="codigocurso" name="codigocurso">
+                                    <option value='1'>Satisfactoria</option>
+                                    <option value='2'>No satisfactoria</option>
+                                    <option value='3'>Desinterés del Usuario</option>  
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Desempeño del estudiante</label>
+                                <input type="text" class="form-control" name="nombre" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                                 <label for="codigocurso">Estado del asunto</label>
@@ -136,8 +187,6 @@
                                     <option value='2'>Desistido </option>
                                 </select>
                             </div>
-                                                        
-                            
                             <div class="form-group">
                                 <label for="codigocurso">Codigo Curso</label>
                                 <select class="form-control" id="codigocurso" name="codigocurso">
