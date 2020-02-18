@@ -1,24 +1,20 @@
 $(obtener_registros());
 
-function obtener_registros(alumnos)
-{
+function obtener_registros(alumnos){
 	$.ajax({
 		url : 'class/tabla.php',
 		type : 'POST',
 		dataType : 'html',
 		data : { alumnos: alumnos },
 		})
-
 	.done(function(resultado){
 		$("#tabla_resultado").html(resultado);
 	})
 }
 
-$(document).on('keyup', '#busqueda', function()
-{
+$(document).on('keyup', '#busqueda', function(){
 	var valorBusqueda = $(this).val();
-	if (valorBusqueda != "")
-	{
+	if (valorBusqueda != ""){
 		obtener_registros(valorBusqueda);
 	}
 	else{

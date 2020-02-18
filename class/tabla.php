@@ -62,7 +62,6 @@
                     ';
             }
             $tabla.='</tbody></table>';
-
         $tabla.='</table>';
     } else{
             $tabla="No se encontraron coincidencias con sus criterios de búsqueda.";
