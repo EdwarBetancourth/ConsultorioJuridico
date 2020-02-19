@@ -1,0 +1,62 @@
+create table musuarios (
+    email varchar(80) primary key,
+    clave varchar(80) not null,
+    nombre varchar(250) not null,
+    cedula varchar(12) not null,
+    celular varchar(25) not null,
+    cargo varchar(50) not null,
+    tpersona int not null,
+    area varchar(50) not null
+);
+
+create table mcasos (
+    radicado varchar(20) primary key,
+    fradicado date not null,
+    nomestudiante varchar(250) not null,
+    nomconsultante varchar(250) not null,
+    area varchar(30) not null,
+    coordinador varchar(250) not null,
+    estado varchar(20) not null,
+    procedencia varchar(250) not null
+);
+
+create table mradicados (
+    radicado  varchar(20) primary key,
+    nomestudiante varchar(250) not null,
+    frecepcion_consulta date not null,
+    nomconsultante varchar(250) not null,
+    fentrega_reporte date not null,
+    fevaluación date not null,
+    primercorte varchar(30) not null,
+    notaprimero double(5,1) not null,
+    segundocorte varchar(30) not null,
+    notasegundo double(5,1) not null,
+    tercercorte varchar(30) not null,
+    notatercero double(5,1) not null,
+    tipoconsulta varchar(250) not null,
+    tema varchar(250) not null,
+    subtema varchar(250) not null,
+    usuario  varchar(80) not null,
+    fmodificacion date not null,
+    foreign key (radicado) references mcasos(radicado),
+    foreign key (usuario) references musuarios(email)
+);
+
+create table mActuaciones (
+    idactuacion integer unsigned auto_increment primary key,
+    radicado  varchar(20) not null,
+    actuacionesdesarrolladas varchar(250) not null,
+    juzgadoEntidad_tramita varchar(250) not null,
+    radicado_juzgadoentidad varchar(250) not null,
+    estadoactuación varchar(20) not null,
+    tresolucionactuacion varchar(250) not null,
+    tformaalterna varchar(250) not null,
+    resolucionactuacion varchar(250) not null,
+    desempeñoestudiante varchar(250) not null,
+    estadoasunto varchar(20) not null,
+    usuario  varchar(80) not null,
+    fmodificacion date not null,
+    foreign key (radicado) references mradicados(radicado),
+    foreign key (usuario) references musuarios(email)
+);
+

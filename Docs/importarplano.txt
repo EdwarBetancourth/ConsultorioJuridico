@@ -1,0 +1,4 @@
+LOAD DATA INFILE 'C:\\ruta\\al\\archivo.csv'
+INTO TABLE mcasos
+FIELDS TERMINATED BY  ',' 
+LINES TERMINATED BY '\n';
