@@ -1,6 +1,6 @@
 <?php
     $host = "localhost";
-    $basededatos = "base1";
+    $basededatos = "consultorjuridico";
     $usuario = "root";
     $contraseña = "";
 
@@ -12,52 +12,75 @@
 
     
     $tabla="";
-    $query="SELECT alumnos.codigo,nombre,mail,codigocurso,nombrecurso from alumnos inner join cursos on alumnos.codigocurso = cursos.codigo order by alumnos.codigo";
+    $query="SELECT * FROM mradicados WHERE 1";
 
     ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-    if(isset($_POST['alumnos']))
+    if(isset($_POST['mradicados']))
     {
-        $q=$conexion->real_escape_string($_POST['alumnos']);
-        $query="select alumnos.codigo,nombre,mail,codigocurso,nombrecurso from alumnos inner join cursos on alumnos.codigocurso = cursos.codigo where mail like '%".$q."%' order by alumnos.codigo";
+        $q=$conexion->real_escape_string($_POST['mradicados']);
+        $query="select * from mradicados where radicado like '%".$q."%' or nomestudiante like '%".$q."%' or nomconsultante like '%".$q."%' order by radicado";
     }
 
-    $buscarAlumnos=$conexion->query($query);
-    if ($buscarAlumnos->num_rows > 0){
+    $buscarmradicados=$conexion->query($query);
+    if ($buscarmradicados->num_rows > 0){
         $tabla.= 
         '<table class="table table-bordered">
             <thead>
                 <tr style="color: white; background: #3383FF;">
                     <th scope="col">#Opciones</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">E-Mail</th>
-                    <th scope="col">Codigo Curso</th>
-                    <th scope="col">Nombre Curso</th>
+                    <th scope="col">Radicado Consultorio Jurídico</th>
+                    <th scope="col">Nombres y Apellidos estudiante</th>
+                    <th scope="col">Fecha recepción consulta</th>
+                    <th scope="col">Nombre y apellido consultante</th>
+                    <th scope="col">Fecha entrega reporte</th>
+                    <th scope="col">Fecha evaluación</th>
+                    <th scope="col">Primer Corte</th>
+                    <th scope="col">Nota Primer corte</th>
+                    <th scope="col">Segundo Corte</th>
+                    <th scope="col">Nota Segundo corte</th>
+                    <th scope="col">Tercer Corte</th>
+                    <th scope="col">Nota Tercer corte</th>
+                    <th scope="col">Tipo de consulta</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Subtema</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Fecha Modificación</th>
                 </tr>
             </thead>
             <tbody>';
-            while($filaAlumnos = $buscarAlumnos->fetch_assoc()){
+            while($filamradicados = $buscarmradicados->fetch_assoc()){
                 $tabla.=
                     '<tr>
                         <td>
                             <div class="form-row" align="center">
                                 <form action="forms/insert.php" method="post">
-                                    <input type="hidden" name="codigo" value='.$filaAlumnos['codigo'].'>
+                                    <input type="hidden" name="radicado" value='.$filamradicados['radicado'].'>
                                     <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
                                 </form>
                                 &nbsp;
                                 <form action="forms/editar.php" method="post">
-                                        <input type="hidden" name="codigo" value='.$filaAlumnos['codigo'].'>
-                                        <input type="hidden" name="nombre" value='.$filaAlumnos['nombre'].'>
-                                        <input type="hidden" name="mail" value='.$filaAlumnos['mail'].'>
-                                        <input type="hidden" name="codigocurso" value='.$filaAlumnos['codigocurso'].'>
+                                        <input type="hidden" name="radicado" value='.$filamradicados['radicado'].'>
                                         <button type="submit" class="btn"><i class="fa fa-bars"></i></button>
                                 </form>
                             </div>
                         </td>
-                        <td>'.$filaAlumnos['nombre'].'</td>
-                        <td>'.$filaAlumnos['mail'].'</td>
-                        <td>'.$filaAlumnos['codigocurso'].'</td>
-                        <td>'.$filaAlumnos['nombrecurso'].'</td>
+                        <td>'.$filamradicados['radicado'].'</td>
+                        <td>'.$filamradicados['nomestudiante'].'</td>
+                        <td>'.$filamradicados['frecepcion_consulta'].'</td>
+                        <td>'.$filamradicados['nomconsultante'].'</td>
+                        <td>'.$filamradicados['fentrega_reporte'].'</td>
+                        <td>'.$filamradicados['fevaluación'].'</td>
+                        <td>'.$filamradicados['primercorte'].'</td>
+                        <td>'.$filamradicados['notaprimero'].'</td>
+                        <td>'.$filamradicados['segundocorte'].'</td>
+                        <td>'.$filamradicados['notasegundo'].'</td>
+                        <td>'.$filamradicados['tercercorte'].'</td>
+                        <td>'.$filamradicados['notatercero'].'</td>
+                        <td>'.$filamradicados['tipoconsulta'].'</td>
+                        <td>'.$filamradicados['tema'].'</td>
+                        <td>'.$filamradicados['subtema'].'</td>
+                        <td>'.$filamradicados['usuario'].'</td>
+                        <td>'.$filamradicados['fmodificacion'].'</td>
                     </tr>
                     ';
             }

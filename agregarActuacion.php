@@ -150,6 +150,16 @@
   </div>
   <br>
   <div class="container" id="tabla_resultado">
+  <table class="table table-bordered">
+            <thead>
+                <tr style="color: white; background: #3383FF;">
+                    <th scope="col">#Opciones</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Subtema</th>
+                </tr>
+            </thead>
+  </table>
+  No se encontraron coincidencias con sus criterios de búsqueda.
   </div>
   <script>
     var selEntidad = document.getElementById("resolucionactuacion");

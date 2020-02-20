@@ -9,15 +9,8 @@
         $objConexion -> abrir_conexion();
         
         $objCursoAD = new curso_ad();
-
-        if(array_key_exists('codigo', $_POST)) {
-            $objCurso = new curso();
-            $objCurso -> set('codigo', $_POST['codigo']);
-            $objCursoAD -> delete($objConexion -> pdo, $objCurso);
-            $objCurso -> __destruct();
-        }
         
-        if(array_key_exists('nombrecurso', $_POST)) {
+        if(array_key_exists('radicado', $_POST)) {
             $objCurso = new curso();
             $objCurso -> set('nombrecurso', $_POST['nombrecurso']);
             $objCursoAD -> create($objConexion -> pdo, $objCurso);

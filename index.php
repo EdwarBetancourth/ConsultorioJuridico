@@ -27,22 +27,17 @@
 <body>
   <?php
         include('class/conexion.php');
-        include('class/alumnos.php');
-        include('class/alumnos_ad.php');
-        include('class/curso.php');
-        include('class/curso_ad.php');
+        include('class/mradicados.php');
+        include('class/mradicados_ad.php');
 
-        $alumnos = array();
-        $cursos = array();
-        
+        $mradicados = array();
+
         $objConexion = new conexion();
         $objConexion -> abrir_conexion();
-        
-        $objalumnosAD = new alumnos_ad();
-        $objcursosAD = new curso_ad();
 
-        $alumnos = $objalumnosAD -> read($objConexion -> pdo);
-        $cursos = $objcursosAD -> read($objConexion -> pdo);
+        $objmradicadosAD = new mradicados_ad();
+
+        $mradicados = $objmradicadosAD -> read($objConexion -> pdo);
     ?>
   <br>
   <br>
@@ -60,101 +55,108 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="forms/insert.php" method="post">
+          <form action="forms/insert_mradicados.php" method="post">
             <div class="container">
               <!--Contenido-->
               <div class="row">
                 <!--primera columna-->
                 <div class="col-sm">
                   <div class="form-group">
-                    <label for="nombre">Nombre Estudiante</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre Estudiante">
+                    <label for="radicado">Radicado consultorio Juridico</label>
+                    <input type="text" class="form-control" name="radicado" placeholder="Radicado consultorio Juridico">
                   </div>
                   <div class="form-group">
-                    <label for="mail">Fecha de recepción de la consulta</label>
-                    <input type="email" class="form-control" name="mail"
+                    <label for="nomestudiante">Nombre Estudiante</label>
+                    <input type="text" class="form-control" name="nomestudiante" placeholder="Nombre Estudiante">
+                  </div>
+                  <div class="form-group">
+                    <label for="frecepcion_consulta">Fecha de recepción de la consulta</label>
+                    <input type="date" class="form-control" name="frecepcion_consulta"
                       placeholder="Fecha de recepción de la consulta">
                   </div>
                   <div class="form-group">
-                    <label for="nombre">Nombre consultante</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre consultante">
+                    <label for="nomconsultante">Nombre consultante</label>
+                    <input type="text" class="form-control" name="nomconsultante" placeholder="Nombre consultante">
                   </div>
                   <div class="form-group">
-                    <label for="nombre">Radicado consultorio Juridico</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Radicado consultorio Juridico">
+                    <label for="fentrega_reporte">Fecha entrega reporte</label>
+                    <input type="date" class="form-control" name="fentrega_reporte" placeholder="Fecha entrega reporte">
                   </div>
                   <div class="form-group">
-                    <label for="nombre">Fecha entrega reporte</label>
-                    <input type="date" class="form-control" name="nombre" placeholder="Fecha entrega reporte">
+                    <label for="fevaluación">Fecha evaluación</label>
+                    <input type="date" class="form-control" name="fevaluación" placeholder="Fecha evaluación">
                   </div>
-                  <div class="form-group">
-                    <label for="nombre">Fecha evaluación</label>
-                    <input type="date" class="form-control" name="nombre" placeholder="Fecha evaluación">
-                  </div>
-
                 </div>
                 <!--Segunda columna-->
                 <div class="col-sm">
                 <div class="row">
                     <div class="col-sm">
                       <div class="form-group">
-                        <label for="codigocurso">1º Primer Corte</label>
-                        <select class="form-control" id="codigocurso" name="codigocurso">
+                        <label for="primercorte">1º Primer Corte</label>
+                        <select class="form-control" id="primercorte" name="primercorte">
                           <option value='1'>10 días</option>
                           <option value='2'>Seguimiento</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm">
-                      <label for="nombre">Nota </label>
-                      <input type="number" class="form-control" name="nombre">
+                      <label for="notaprimero">Nota </label>
+                      <input type="number" class="form-control" name="notaprimero">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm">
                       <div class="form-group">
-                        <label for="codigocurso">2º Segundo Corte</label>
-                        <select class="form-control" id="codigocurso" name="codigocurso">
+                        <label for="segundocorte">2º Segundo Corte</label>
+                        <select class="form-control" id="segundocorte" name="segundocorte">
                           <option value='1'>10 días</option>
                           <option value='2'>Seguimiento</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm">
-                      <label for="nombre">Nota </label>
-                      <input type="number" class="form-control" name="nombre">
+                      <label for="notasegundo">Nota </label>
+                      <input type="number" class="form-control" name="notasegundo">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm">
                       <div class="form-group">
-                        <label for="codigocurso">3º Tercer Corte</label>
-                        <select class="form-control" id="codigocurso" name="codigocurso">
+                        <label for="tercercorte">3º Tercer Corte</label>
+                        <select class="form-control" id="tercercorte" name="tercercorte">
                           <option value='1'>10 días</option>
                           <option value='2'>Seguimiento</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-sm">
-                      <label for="nombre">Nota </label>
-                      <input type="number" class="form-control" name="nombre">
+                      <label for="notatercero">Nota </label>
+                      <input type="number" class="form-control" name="notatercero">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="codigocurso">Tipo de consulta</label>
-                    <select class="form-control" id="codigocurso" name="codigocurso">
+                    <label for="tipoconsulta">Tipo de consulta</label>
+                    <select class="form-control" id="tipoconsulta" name="tipoconsulta">
                       <option value='1'>Información</option>
                       <option value='2'>Asuntos con representación judicial</option>
                       <option value='2'>Asuntos sin representación judicial</option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="nombre">Tema</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Tema">
+                    <label for="tema">Tema</label>
+                    <input type="text" class="form-control" name="tema" placeholder="Tema">
                   </div>
                   <div class="form-group">
-                    <label for="nombre">Subtema</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Subtema">
+                    <label for="subtema">Subtema</label>
+                    <input type="text" class="form-control" name="subtema" placeholder="Subtema">
+                  </div>
+                  <div class="form-group">
+                    <label for="usuario">usuario</label>
+                    <input type="email" class="form-control" name="usuario" placeholder="usuario">
+                  </div>
+                  <div class="form-group">
+                    <label for="fmodificacion">Fecha Inscripción</label>
+                    <input type="date" class="form-control" name="fmodificacion" placeholder="Fecha evaluación">
                   </div>
                 </div>
               </div>
@@ -176,42 +178,8 @@
     </div>
   </div>
   <br>
-  <div class="container" id="tabla_resultad">
-  <table class="table table-bordered">
-            <thead>
-                <tr style="color: white; background: #3383FF;">
-                    <th scope="col">#Opciones</th>
-                    <th scope="col">Nombres y Apellidos estudiante</th>
-                    <th scope="col">Fecha recepción consulta</th>
-                    <th scope="col">Nombre y apellido consultante</th>
-                    <th scope="col">Radicado Consultorio Jurídico</th>
-                    <th scope="col">Fecha entrega reporte</th>
-                    <th scope="col">Fecha evaluación</th>
-                    <th scope="col">Primer Corte</th>
-                    <th scope="col">Nota Primer corte</th>
-                    <th scope="col">Segundo Corte</th>
-                    <th scope="col">Nota Segundo corte</th>
-                    <th scope="col">Tercer Corte</th>
-                    <th scope="col">Nota Tercer corte</th>
-                    <th scope="col">Tipo de consulta</th>
-                    <th scope="col">Tema</th>
-                    <th scope="col">Subtema</th>
-                </tr>
-            </thead>
-  </table>
-  No se encontraron coincidencias con sus criterios de búsqueda.
+  <div class="container" id="tabla_resultado">
   </div>
-  <script>
-    var selEntidad = document.getElementById("resolucionactuacion");
-    selEntidad.addEventListener("change", function (event) {
-      var startDate = document.getElementById("resolucionactuacion").value;
-      if (startDate == 3) {
-        document.getElementById("formaa").style.display = "block";
-      } else {
-        document.getElementById("formaa").style.display = "none";
-      }
-    });
-  </script>
 </body>
 
 </html>

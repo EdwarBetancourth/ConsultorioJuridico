@@ -17,7 +17,6 @@
 				array_push($Curso, $objCurso);
 				$objCurso -> __destruct();
 			}
-			
 			return $Curso;
 		}
 		
