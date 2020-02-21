@@ -8,7 +8,7 @@
 			$host = "localhost";
 			$user = "root";
 			$pass = "";
-			$db = "base1";
+			$db = "consultorjuridico";
 			
 			try {
 				$this -> pdo = new PDO("mysql:host=$host;dbname=$db;", $user, $pass);

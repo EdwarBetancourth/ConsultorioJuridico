@@ -26,42 +26,35 @@
 <body>
     <?php
         include('../class/conexion.php');
-        include('../class/alumnos.php');
-        include('../class/alumnos_ad.php');
-        include('../class/curso.php');
-        include('../class/curso_ad.php');
+        include('../class/mradicados.php');
+        include('../class/mradicados_ad.php');
         
-        $alumnos = array();
+        $mradicados = array();
         $cursos = array();
         
         $objConexion = new conexion();
         $objConexion -> abrir_conexion();
         
-        $objalumnosAD = new alumnos_ad();
-        $objcursosAD = new curso_ad();
+        $objmradicadosAD = new mradicados_ad();
 
-        $codigo = 0;
+        $radicado = 0;
         $nombre = "";
         $mail = "";
         $codigocurso = "";
     
-        if(array_key_exists('nombre',$_POST)) {
-            $codigo = $_POST['codigo'];
-            $nombre = $_POST['nombre'];
-            $mail = $_POST['mail'];
-            $codigocurso = $_POST['codigocurso'];
+        if(array_key_exists('radicado',$_POST)) {
+            $radicado = $_POST['radicado'];
         }
-        $cursos = $objcursosAD -> read($objConexion -> pdo);
     ?>
         <br>
         <div class="container" style="width: 50%;">
             <h1 class="card-title">Actualizar Registro</h1>
             <br>
             <form action="update.php" method="post">
-                <input type="hidden" name="codigo" value="<?php echo $codigo; ?>">
+                <input type="hidden" name="codigo" value="<?php echo $radicado; ?>">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?php echo $nombre; ?>">
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="<?php echo $radicado; ?>">
                 </div>
                 <div class="form-group">
                     <label for="mail">E-Mail</label>

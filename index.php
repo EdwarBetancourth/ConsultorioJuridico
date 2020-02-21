@@ -86,6 +86,10 @@
                     <label for="fevaluación">Fecha evaluación</label>
                     <input type="date" class="form-control" name="fevaluación" placeholder="Fecha evaluación">
                   </div>
+                  <div class="form-group">
+                    <label for="usuario">usuario</label>
+                    <input type="email" class="form-control" name="usuario" placeholder="usuario">
+                  </div>
                 </div>
                 <!--Segunda columna-->
                 <div class="col-sm">
@@ -94,8 +98,8 @@
                       <div class="form-group">
                         <label for="primercorte">1º Primer Corte</label>
                         <select class="form-control" id="primercorte" name="primercorte">
-                          <option value='1'>10 días</option>
-                          <option value='2'>Seguimiento</option>
+                          <option value='10 días'>10 días</option>
+                          <option value='Seguimiento'>Seguimiento</option>
                         </select>
                       </div>
                     </div>
@@ -109,8 +113,8 @@
                       <div class="form-group">
                         <label for="segundocorte">2º Segundo Corte</label>
                         <select class="form-control" id="segundocorte" name="segundocorte">
-                          <option value='1'>10 días</option>
-                          <option value='2'>Seguimiento</option>
+                          <option value='10 días'>10 días</option>
+                          <option value='Seguimiento'>Seguimiento</option>
                         </select>
                       </div>
                     </div>
@@ -124,8 +128,8 @@
                       <div class="form-group">
                         <label for="tercercorte">3º Tercer Corte</label>
                         <select class="form-control" id="tercercorte" name="tercercorte">
-                          <option value='1'>10 días</option>
-                          <option value='2'>Seguimiento</option>
+                          <option value='10 días'>10 días</option>
+                          <option value='Seguimiento'>Seguimiento</option>
                         </select>
                       </div>
                     </div>
@@ -137,9 +141,9 @@
                   <div class="form-group">
                     <label for="tipoconsulta">Tipo de consulta</label>
                     <select class="form-control" id="tipoconsulta" name="tipoconsulta">
-                      <option value='1'>Información</option>
-                      <option value='2'>Asuntos con representación judicial</option>
-                      <option value='2'>Asuntos sin representación judicial</option>
+                      <option value='Información'>Información</option>
+                      <option value='Asuntos con representación judicial'>Asuntos con representación judicial</option>
+                      <option value='Asuntos sin representación judicial'>Asuntos sin representación judicial</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -151,12 +155,8 @@
                     <input type="text" class="form-control" name="subtema" placeholder="Subtema">
                   </div>
                   <div class="form-group">
-                    <label for="usuario">usuario</label>
-                    <input type="email" class="form-control" name="usuario" placeholder="usuario">
-                  </div>
-                  <div class="form-group">
                     <label for="fmodificacion">Fecha Inscripción</label>
-                    <input type="date" class="form-control" name="fmodificacion" placeholder="Fecha evaluación">
+                    <input type="date" class="form-control" name="fmodificacion" placeholder="Fecha Inscripción">
                   </div>
                 </div>
               </div>
@@ -178,8 +178,10 @@
     </div>
   </div>
   <br>
-  <div class="container" id="tabla_resultado">
+  <div class="container">
+    <div class="table-responsive" id="tabla_resultado">
+
+    </div>
   </div>
 </body>
-
 </html>

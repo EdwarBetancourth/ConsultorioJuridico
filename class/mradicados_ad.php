@@ -54,29 +54,27 @@
 			$subtema = $objAux -> get('subtema');
 			$usuario = $objAux -> get('usuario');
 			$fmodificacion = $objAux -> get('fmodificacion');
-			echo '<script> alert("Hello! I am an alert box!!"); </script>';
 			$sql = "insert into mradicados (radicado, nomestudiante, frecepcion_consulta, nomconsultante, fentrega_reporte, fevaluación, primercorte, notaprimero, segundocorte, notasegundo, tercercorte, notatercero, tipoconsulta, tema, subtema, usuario, fmodificacion) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			$sentencia = $pdo -> prepare($sql);
 			$sentencia -> execute(array($radicado, $nomestudiante, $frecepcion_consulta, $nomconsultante, $fentrega_reporte, $fevaluación, $primercorte, $notaprimero, $segundocorte, $notasegundo, $tercercorte, $notatercero, $tipoconsulta, $tema, $subtema, $usuario, $fmodificacion));
-			echo '<script> alert("'.$sql,",", $radicado,",", $nomestudiante,",", $frecepcion_consulta,",", $nomconsultante,",", $fentrega_reporte,",", $fevaluación,",", $primercorte,",", $notaprimero,",", $segundocorte,",", $notasegundo,",", $tercercorte,",", $notatercero,",", $tipoconsulta,",", $tema,",", $subtema,",", $usuario,",", $fmodificacion.'"); </script>';
 		}
 
 		public function delete($pdo,$objAux) {
-			$codigo = $objAux -> get('codigo');
-			$sql = "delete from mradicados where codigo=? ";
+			$codigo = $objAux -> get('radicado');
+			$sql = "delete from mradicados where radicado = ?";
 			$sentencia = $pdo -> prepare($sql);
-            $sentencia -> execute(array($codigo));
+            $sentencia -> execute(array($radicado));
 		}
 
         public function update($pdo,$objAux) {
             $nombre = $objAux -> get('nombre');
 			$mail = $objAux -> get('mail');
 			$codigocurso = $objAux -> get('codigocurso');
-			$codigo = $objAux -> get('codigo');
+			$codigo = $objAux -> get('radicado');
             
-			$sql = "update mradicados set nombre = ?, mail = ?, codigocurso = ? where codigo=? ";
+			$sql = "update mradicados set nombre = ?, mail = ?, codigocurso = ? where radicado=? ";
 			$sentencia = $pdo -> prepare($sql);
-            $sentencia -> execute(array($nombre, $mail, $codigocurso, $codigo));
+            $sentencia -> execute(array($nombre, $mail, $codigocurso, $radicado));
 		}
 
 		public function __destruct() {}

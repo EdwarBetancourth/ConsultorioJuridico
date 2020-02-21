@@ -10,13 +10,11 @@
         die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());
     }
 
-    
     $tabla="";
     $query="SELECT * FROM mradicados WHERE 1";
 
     ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-    if(isset($_POST['mradicados']))
-    {
+    if(isset($_POST['mradicados'])){
         $q=$conexion->real_escape_string($_POST['mradicados']);
         $query="select * from mradicados where radicado like '%".$q."%' or nomestudiante like '%".$q."%' or nomconsultante like '%".$q."%' order by radicado";
     }
@@ -55,11 +53,43 @@
                             <div class="form-row" align="center">
                                 <form action="forms/insert.php" method="post">
                                     <input type="hidden" name="radicado" value='.$filamradicados['radicado'].'>
+                                    <input type="hidden" name="nomestudiante" value='.$filamradicados['nomestudiante'].'>
+                                    <input type="hidden" name="frecepcion_consulta" value='.$filamradicados['frecepcion_consulta'].'>
+                                    <input type="hidden" name="nomconsultante" value='.$filamradicados['nomconsultante'].'>
+                                    <input type="hidden" name="fentrega_reporte" value='.$filamradicados['fentrega_reporte'].'>
+                                    <input type="hidden" name="fevaluación" value='.$filamradicados['fevaluación'].'>
+                                    <input type="hidden" name="primercorte" value='.$filamradicados['primercorte'].'>
+                                    <input type="hidden" name="notaprimero" value='.$filamradicados['notaprimero'].'>
+                                    <input type="hidden" name="segundocorte" value='.$filamradicados['segundocorte'].'>
+                                    <input type="hidden" name="notasegundo" value='.$filamradicados['notasegundo'].'>
+                                    <input type="hidden" name="tercercorte" value='.$filamradicados['tercercorte'].'>
+                                    <input type="hidden" name="notatercero" value='.$filamradicados['notatercero'].'>
+                                    <input type="hidden" name="tipoconsulta" value='.$filamradicados['tipoconsulta'].'>
+                                    <input type="hidden" name="tema" value='.$filamradicados['tema'].'>
+                                    <input type="hidden" name="subtema" value='.$filamradicados['subtema'].'>
+                                    <input type="hidden" name="usuario" value='.$filamradicados['usuario'].'>
+                                    <input type="hidden" name="fmodificacion" value='.$filamradicados['fmodificacion'].'>
                                     <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
                                 </form>
                                 &nbsp;
-                                <form action="forms/editar.php" method="post">
-                                        <input type="hidden" name="radicado" value='.$filamradicados['radicado'].'>
+                                <form action="./agregarActuacion.php" method="post">
+                                        <input type="hidden" name="radicado" value="'.$filamradicados['radicado'].'">
+                                        <input type="hidden" name="nomestudiante" value="'.$filamradicados['nomestudiante'].'">
+                                        <input type="hidden" name="frecepcion_consulta" value="'.$filamradicados['frecepcion_consulta'].'">
+                                        <input type="hidden" name="nomconsultante" value="'.$filamradicados['nomconsultante'].'">
+                                        <input type="hidden" name="fentrega_reporte" value="'.$filamradicados['fentrega_reporte'].'">
+                                        <input type="hidden" name="fevaluación" value="'.$filamradicados['fevaluación'].'">
+                                        <input type="hidden" name="primercorte" value="'.$filamradicados['primercorte'].'">
+                                        <input type="hidden" name="notaprimero" value="'.$filamradicados['notaprimero'].'">
+                                        <input type="hidden" name="segundocorte" value="'.$filamradicados['segundocorte'].'">
+                                        <input type="hidden" name="notasegundo" value="'.$filamradicados['notasegundo'].'">
+                                        <input type="hidden" name="tercercorte" value="'.$filamradicados['tercercorte'].'">
+                                        <input type="hidden" name="notatercero" value="'.$filamradicados['notatercero'].'">
+                                        <input type="hidden" name="tipoconsulta" value="'.$filamradicados['tipoconsulta'].'">
+                                        <input type="hidden" name="tema" value="'.$filamradicados['tema'].'">
+                                        <input type="hidden" name="subtema" value="'.$filamradicados['subtema'].'">
+                                        <input type="hidden" name="usuario" value="'.$filamradicados['usuario'].'">
+                                        <input type="hidden" name="fmodificacion" value="'.$filamradicados['fmodificacion'].'">
                                         <button type="submit" class="btn"><i class="fa fa-bars"></i></button>
                                 </form>
                             </div>
@@ -84,7 +114,7 @@
                     </tr>
                     ';
             }
-            $tabla.='</tbody></table>';
+            $tabla.='</tbody>';
         $tabla.='</table>';
     } else{
             $tabla="No se encontraron coincidencias con sus criterios de búsqueda.";

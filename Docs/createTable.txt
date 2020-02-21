@@ -38,24 +38,23 @@ create table mradicados (
     subtema varchar(250) null,
     usuario  varchar(80) not null,
     fmodificacion date null,
-    foreign key (radicado) references mcasos(radicado),
     foreign key (usuario) references musuarios(email)
 );
 
-create table mActuaciones (
+create table mactuaciones (
     idactuacion integer unsigned auto_increment primary key,
     radicado  varchar(20) not null,
-    actuacionesdesarrolladas varchar(250) not null,
-    juzgadoEntidad_tramita varchar(250) not null,
-    radicado_juzgadoentidad varchar(250) not null,
-    estadoactuación varchar(20) not null,
-    tresolucionactuacion varchar(250) not null,
-    tformaalterna varchar(250) not null,
-    resolucionactuacion varchar(250) not null,
-    desempeñoestudiante varchar(250) not null,
-    estadoasunto varchar(20) not null,
+    actuacionesdesarrolladas varchar(250) null,
+    juzgadoentidad_tramita varchar(250) null,
+    radicado_juzgadoentidad varchar(250) null,
+    estadoactuación varchar(20) null,
+    tresolucionactuacion varchar(250) null,
+    tformaalterna varchar(250) null,
+    resolucionactuacion varchar(250) null,
+    desempenoestudiante varchar(250) null,
+    estadoasunto varchar(20) null,
     usuario  varchar(80) not null,
-    fmodificacion date not null,
+    fmodificacion date null,
     foreign key (radicado) references mradicados(radicado),
     foreign key (usuario) references musuarios(email)
 );

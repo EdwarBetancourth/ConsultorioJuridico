@@ -31,7 +31,6 @@
             $objmradicados -> set('fmodificacion', $_POST['fmodificacion']);
             $objmradicadosAD -> create($objConexion -> pdo, $objmradicados);
             $objmradicados -> __destruct();
-            echo '<script> alert("la fecha es'.$_POST['frecepcion_consulta'].'"); </script>';
-            //header('Location: ../index.php');
+            header('Location: ../index.php');
         }
     ?>

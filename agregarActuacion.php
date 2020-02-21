@@ -20,29 +20,62 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel=StyleSheet href="style/style.css" type="text/css" media=screen>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="./js/main.js"></script>
+  <script src="js/main2.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="./img/logo.ico" />
 </head>
 
 <body>
   <?php
-        include('class/conexion.php');
-        include('class/alumnos.php');
-        include('class/alumnos_ad.php');
-        include('class/curso.php');
-        include('class/curso_ad.php');
+        include('./class/conexion.php');
+        include('./class/mradicados.php');
+        include('./class/mradicados_ad.php');
 
-        $alumnos = array();
+        $mradicados = array();
         $cursos = array();
         
         $objConexion = new conexion();
         $objConexion -> abrir_conexion();
         
-        $objalumnosAD = new alumnos_ad();
-        $objcursosAD = new curso_ad();
+        $objmradicadosAD = new mradicados_ad();
 
-        $alumnos = $objalumnosAD -> read($objConexion -> pdo);
-        $cursos = $objcursosAD -> read($objConexion -> pdo);
+        $radicado = "";
+        $nomestudiante = "";
+        $frecepcion_consulta = "";
+        $nomconsultante = "";
+        $fentrega_reporte = "";
+        $fevaluación = "";
+        $primercorte = "";
+        $notaprimero = "";
+        $segundocorte = "";
+        $notasegundo = "";
+        $tercercorte = "";
+        $notatercero = "";
+        $tipoconsulta = "";
+        $tema = "";
+        $subtema = "";
+        $usuario = "";
+        $fmodificacion = "";
+
+        if(array_key_exists('radicado',$_POST)) {
+          $radicado = $_POST['radicado'];
+          $nomestudiante = $_POST['nomestudiante'];
+          $frecepcion_consulta = $_POST['frecepcion_consulta'];
+          $nomconsultante = $_POST['nomconsultante'];
+          $fentrega_reporte = $_POST['fentrega_reporte'];
+          $fevaluación = $_POST['fevaluación'];
+          $primercorte = $_POST['primercorte'];
+          $notaprimero = $_POST['notaprimero'];
+          $segundocorte = $_POST['segundocorte'];
+          $notasegundo = $_POST['notasegundo'];
+          $tercercorte = $_POST['tercercorte'];
+          $notatercero = $_POST['notatercero'];
+          $tipoconsulta = $_POST['tipoconsulta'];
+          $tema = $_POST['tema'];
+          $subtema = $_POST['subtema'];
+          $usuario = $_POST['usuario'];
+          $fmodificacion = $_POST['fmodificacion'];
+        }
+
     ?>
   <br>
   <br>
@@ -60,74 +93,83 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="forms/insert.php" method="post">
+          <form action="forms/insert_mactuaciones.php" method="post">
             <div class="container">
               <!--Contenido-->
               <div class="row">
                 <!--primera columna-->
                 <div class="col-sm">
+                    <input type="hidden" name="radicado" value="<?php echo $radicado; ?>">
                     <div class="form-group">
-                        <label for="nombre">Actuaciones desarrolladas</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Actuaciones desarrolladas">
+                        <label for="actuacionesdesarrolladas">Actuaciones desarrolladas</label>
+                        <input type="text" class="form-control" name="actuacionesdesarrolladas" placeholder="Actuaciones desarrolladas">
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Juzgado y/o Entidad ante la cual se tramita </label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Juzgado y/o Entidad ante la cual se tramita">
+                        <label for="juzgadoentidad_tramita">Juzgado y/o Entidad ante la cual se tramita </label>
+                        <input type="text" class="form-control" name="juzgadoentidad_tramita" placeholder="Juzgado y/o Entidad ante la cual se tramita">
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Radicado Juzgado y/o Entidad</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Radicado Juzgado y/o Entidad">
+                        <label for="radicado_juzgadoentidad">Radicado Juzgado y/o Entidad</label>
+                        <input type="text" class="form-control" name="radicado_juzgadoentidad" placeholder="Radicado Juzgado y/o Entidad">
                     </div>
                     <div class="form-group">
-                        <label for="codigocurso">Estado actuación</label>
-                        <select class="form-control" id="codigocurso" name="codigocurso">
+                        <label for="estadoactuacion">Estado actuación</label>
+                        <select class="form-control" id="estadoactuacion" name="estadoactuacion">
                             <option value='1'>Satisfactoria</option>
                             <option value='2'>No satisfactoria</option>
                             <option value='3'>Desinterés del Usuario</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                      <label for="usuario">usuario</label>
+                      <input type="email" class="form-control" name="usuario" placeholder="usuario">
+                    </div>
                 </div>
                 <!--Segunda columna-->
                 <div class="col-sm">
                     <div class="form-group">
-                        <label for="codigocurso">Resolución de actuación</label>
-                        <select class="form-control" id="resolucionactuacion" name="resolucionactuacion">
+                        <label for="tresolucionactuacion">Resolución de actuación</label>
+                        <select class="form-control" id="tresolucionactuacion" name="tresolucionactuacion">
                             <option value='1' selected>Instancias Judiciales</option>
                             <option value='2'>Instancias Administrativas</option>
                             <option value='3'>Forma alterna</option>
                         </select>
                     </div>
                     <div class="form-group" id="formaa" style="display: none">
-                        <label for="formaalterna">Forma alterna</label>
-                        <select class="form-control" id="formaalterna" name="formaalterna">
+                        <label for="tformaalterna">Forma alterna</label>
+                        <select class="form-control" id="tformaalterna" name="tformaalterna">
                             <option value='1' selected>Información</option>
                             <option value='2'>MASC</option>
                             <option value='3'>Soluciones jurídicas o sociales alternas</option>
                         </select>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                        <label class="form-check-label" for="inlineRadio1">Satisfactoria</label>
+                        <input class="form-check-input" type="radio" name="resolucionactuacion" id="resolucionactuacion" value="Satisfactoria">
+                        <label class="form-check-label" for="resolucionactuacion">Satisfactoria</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                        <label class="form-check-label" for="inlineRadio2">No satisfactoria</label>
+                        <input class="form-check-input" type="radio" name="resolucionactuacion" id="resolucionactuacion" value="No satisfactoria">
+                        <label class="form-check-label" for="resolucionactuacion">No satisfactoria</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                        <label class="form-check-label" for="inlineRadio3">Desinterés del Usuario</label>
+                        <input class="form-check-input" type="radio" name="resolucionactuacion" id="resolucionactuacion" value="Desinterés del Usuario">
+                        <label class="form-check-label" for="resolucionactuacion">Desinterés del Usuario</label>
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Desempeño del estudiante</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+                        <label for="desempenoestudiante">Desempeño del estudiante</label>
+                        <input type="text" class="form-control" name="desempenoestudiante" placeholder="Desempeño del estudiante">
                     </div>
                     <div class="form-group">
-                        <label for="codigocurso">Estado del asunto</label>
-                        <select class="form-control" id="codigocurso" name="codigocurso">
+                        <label for="estadoasunto">Estado del asunto</label>
+                        <select class="form-control" id="estadoasunto" name="estadoasunto">
                             <option value='1'>Abierto</option>
                             <option value='2'>Archivado </option>
                             <option value='2'>Desistido </option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="fmodificacion">Fecha Inscripción</label>
+                      <input type="date" class="form-control" name="fmodificacion" placeholder="Fecha Inscripción">
                     </div>
                 </div>
               </div>
@@ -143,6 +185,62 @@
         </div>
       </div>
     </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            <h6>Radicado Consultorio Jurídico:</h6> <?php echo $radicado; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Nombres y Apellidos estudiante:</h6> <?php echo $nomestudiante; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Fecha recepción consulta:</h6> <?php echo $frecepcion_consulta; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+            <h6>Nombre y apellido consultante:</h6> <?php echo $nomconsultante; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Fecha entrega reporte:</h6> <?php echo $fentrega_reporte; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Fecha evaluación:</h6> <?php echo $fevaluación; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+            <h6>Primer Corte:</h6>  <?php echo $primercorte; ?> <h6>Nota Primer corte:</h6> <?php echo $notaprimero; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Segundo Corte:</h6>  <?php echo $segundocorte; ?> <h6>Nota Segundo corte:</h6> <?php echo $notasegundo; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Tercer Corte:</h6>  <?php echo $tercercorte; ?> <h6>Nota Tercer corte:</h6> <?php echo $notatercero; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+            <h6>Tipo de consulta:</h6> <?php echo $tipoconsulta; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Tema:</h6> <?php echo $tema; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Subtema:</h6> <?php echo $subtema; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+            <h6>Usuario:</h6> <?php echo $usuario; ?>
+            </div>
+            <div class="col-sm">
+            <h6>Fecha Inscripción:</h6> <?php echo $fmodificacion; ?>
+            </div>
+        </div>
+    </div>
     <div class="form-group">
       <br>
       <input type="text" class="form-control" name="busqueda" id="busqueda" placeholder="Buscar por E-mail">
@@ -150,21 +248,12 @@
   </div>
   <br>
   <div class="container" id="tabla_resultado">
-  <table class="table table-bordered">
-            <thead>
-                <tr style="color: white; background: #3383FF;">
-                    <th scope="col">#Opciones</th>
-                    <th scope="col">Tema</th>
-                    <th scope="col">Subtema</th>
-                </tr>
-            </thead>
-  </table>
-  No se encontraron coincidencias con sus criterios de búsqueda.
+
   </div>
   <script>
-    var selEntidad = document.getElementById("resolucionactuacion");
+    var selEntidad = document.getElementById("tresolucionactuacion");
     selEntidad.addEventListener("change", function (event) {
-      var startDate = document.getElementById("resolucionactuacion").value;
+      var startDate = document.getElementById("tresolucionactuacion").value;
       if (startDate == 3) {
         document.getElementById("formaa").style.display = "block";
       } else {
