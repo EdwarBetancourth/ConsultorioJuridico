@@ -52,7 +52,7 @@
                                     <input type="hidden" name="actuacionesdesarrolladas" value="'.$filamactuaciones['actuacionesdesarrolladas'].'">
                                     <input type="hidden" name="juzgadoentidad_tramita" value="'.$filamactuaciones['juzgadoentidad_tramita'].'">
                                     <input type="hidden" name="radicado_juzgadoentidad" value="'.$filamactuaciones['radicado_juzgadoentidad'].'">
-                                    <input type="hidden" name="estadoactuación" value="'.$filamactuaciones['estadoactuación'].'">
+                                    <input type="hidden" name="estadoactuacion" value="'.$filamactuaciones['estadoactuacion'].'">
                                     <input type="hidden" name="tresolucionactuacion" value="'.$filamactuaciones['tresolucionactuacion'].'">
                                     <input type="hidden" name="tformaalterna" value="'.$filamactuaciones['tformaalterna'].'">
                                     <input type="hidden" name="resolucionactuacion" value="'.$filamactuaciones['resolucionactuacion'].'">
@@ -68,12 +68,13 @@
                                         <input type="hidden" name="actuacionesdesarrolladas" value="'.$filamactuaciones['actuacionesdesarrolladas'].'">
                                         <input type="hidden" name="juzgadoentidad_tramita" value="'.$filamactuaciones['juzgadoentidad_tramita'].'">
                                         <input type="hidden" name="radicado_juzgadoentidad" value="'.$filamactuaciones['radicado_juzgadoentidad'].'">
-                                        <input type="hidden" name="estadoactuación" value="'.$filamactuaciones['estadoactuación'].'">
+                                        <input type="hidden" name="estadoactuacion" value="'.$filamactuaciones['estadoactuacion'].'">
                                         <input type="hidden" name="tresolucionactuacion" value="'.$filamactuaciones['tresolucionactuacion'].'">
                                         <input type="hidden" name="tformaalterna" value="'.$filamactuaciones['tformaalterna'].'">
                                         <input type="hidden" name="resolucionactuacion" value="'.$filamactuaciones['resolucionactuacion'].'">
                                         <input type="hidden" name="desempenoestudiante" value="'.$filamactuaciones['desempenoestudiante'].'">
                                         <input type="hidden" name="estadoasunto" value="'.$filamactuaciones['estadoasunto'].'">
+                                        <input type="hidden" name="usuario" value="'.$filamactuaciones['usuario'].'">
                                         <input type="hidden" name="fmodificacion" value="'.$filamactuaciones['fmodificacion'].'">
                                         <button type="submit" class="btn"><i class="fa fa-bars"></i></button>
                                 </form>
@@ -83,11 +84,12 @@
                         <td>'.$filamactuaciones['actuacionesdesarrolladas'].'</td>
                         <td>'.$filamactuaciones['juzgadoentidad_tramita'].'</td>
                         <td>'.$filamactuaciones['radicado_juzgadoentidad'].'</td>
-                        <td>'.$filamactuaciones['estadoactuación'].'</td>
+                        <td>'.$filamactuaciones['estadoactuacion'].'</td>
                         <td>'.$filamactuaciones['tresolucionactuacion'].'</td>
                         <td>'.$filamactuaciones['tformaalterna'].'</td>
                         <td>'.$filamactuaciones['resolucionactuacion'].'</td>
                         <td>'.$filamactuaciones['desempenoestudiante'].'</td>
+                        <td>'.$filamactuaciones['estadoasunto'].'</td>
                         <td>'.$filamactuaciones['usuario'].'</td>
                         <td>'.$filamactuaciones['fmodificacion'].'</td>
                     </tr>

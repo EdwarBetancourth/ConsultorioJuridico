@@ -115,9 +115,9 @@
                     <div class="form-group">
                         <label for="estadoactuacion">Estado actuación</label>
                         <select class="form-control" id="estadoactuacion" name="estadoactuacion">
-                            <option value='1'>Satisfactoria</option>
-                            <option value='2'>No satisfactoria</option>
-                            <option value='3'>Desinterés del Usuario</option>
+                            <option value='Satisfactoria'selected>Satisfactoria</option>
+                            <option value='No satisfactoria'>No satisfactoria</option>
+                            <option value='Desinterés del Usuario'>Desinterés del Usuario</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -130,17 +130,18 @@
                     <div class="form-group">
                         <label for="tresolucionactuacion">Resolución de actuación</label>
                         <select class="form-control" id="tresolucionactuacion" name="tresolucionactuacion">
-                            <option value='1' selected>Instancias Judiciales</option>
-                            <option value='2'>Instancias Administrativas</option>
-                            <option value='3'>Forma alterna</option>
+                            <option value='Instancias Judiciales' selected>Instancias Judiciales</option>
+                            <option value='Instancias Administrativas'>Instancias Administrativas</option>
+                            <option value='Forma alterna'>Forma alterna</option>
                         </select>
                     </div>
                     <div class="form-group" id="formaa" style="display: none">
                         <label for="tformaalterna">Forma alterna</label>
                         <select class="form-control" id="tformaalterna" name="tformaalterna">
-                            <option value='1' selected>Información</option>
-                            <option value='2'>MASC</option>
-                            <option value='3'>Soluciones jurídicas o sociales alternas</option>
+                            <option value='No Aplica' selected>No Aplica</option>
+                            <option value='Información'>Información</option>
+                            <option value='MASC'>MASC</option>
+                            <option value='Soluciones jurídicas o sociales alternas'>Soluciones jurídicas o sociales alternas</option>
                         </select>
                     </div>
                     <div class="form-check form-check-inline">
@@ -162,9 +163,9 @@
                     <div class="form-group">
                         <label for="estadoasunto">Estado del asunto</label>
                         <select class="form-control" id="estadoasunto" name="estadoasunto">
-                            <option value='1'>Abierto</option>
-                            <option value='2'>Archivado </option>
-                            <option value='2'>Desistido </option>
+                            <option value='Abierto'>Abierto</option>
+                            <option value='Archivado'>Archivado </option>
+                            <option value='Desistido'>Desistido </option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -247,14 +248,16 @@
     </div>
   </div>
   <br>
-  <div class="container" id="tabla_resultado">
+  <div class="container" >
+  <div class="table-responsive" id="tabla_resultado">
 
+</div>
   </div>
   <script>
     var selEntidad = document.getElementById("tresolucionactuacion");
     selEntidad.addEventListener("change", function (event) {
       var startDate = document.getElementById("tresolucionactuacion").value;
-      if (startDate == 3) {
+      if (startDate == "Forma alterna") {
         document.getElementById("formaa").style.display = "block";
       } else {
         document.getElementById("formaa").style.display = "none";

@@ -26,6 +26,6 @@
             $objmactuaciones -> set('fmodificacion', $_POST['fmodificacion']);
             $objmactuacionesAD -> create($objConexion -> pdo, $objmactuaciones);
             $objmactuaciones -> __destruct();
-            //header('Location: ../agregarActuacion.php');
+            header('Location: ../agregarActuacion.php');
         }
     ?>
